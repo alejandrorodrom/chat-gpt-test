@@ -1,0 +1,13 @@
+<div
+  class="message"
+  [ngClass]="{
+    'message__request': type === 'request',
+    'message__response': type === 'response'
+  }">
+  <p [ngClass]="{
+    'message__request--text': type === 'request',
+    'message__response--text': type === 'response',
+  }">
+    <ng-content></ng-content>
+  </p>
+</div>

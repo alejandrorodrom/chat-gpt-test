@@ -1,0 +1,15 @@
+<section class="container">
+  <app-screen>
+    <div #conversation class="conversation">
+      <app-message *ngFor="let message of chatState.messages" [type]="message.type">
+        {{ message.message }}
+      </app-message>
+    </div>
+    <form class="text" [formGroup]="form" (submit)="sendQuestion()">
+      <input class="text__input" formControlName="question" />
+      <button type="submit" class="text__button" [disabled]="question?.status === 'INVALID' || form.disabled">
+        Enviar
+      </button>
+    </form>
+  </app-screen>
+</section>

@@ -1,0 +1,32 @@
+.message {
+  width: auto;
+  max-width: 600px;
+  padding: 12px;
+  box-sizing: border-box;
+
+  &__request {
+    background-color: #165c4b;
+    border: 2px solid #165c4b;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+
+    &--text {
+      color: white;
+      margin: 0;
+    }
+  }
+
+  &__response {
+    background-color: #212c34;
+    border: 2px solid #212c34;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+
+    &--text {
+      color: white;
+      margin: 0;
+    }
+  }
+}

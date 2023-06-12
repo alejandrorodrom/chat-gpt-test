@@ -1,0 +1,56 @@
+.container {
+  .conversation {
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+    height: 550px;
+    overflow-y: scroll;
+    padding: 25px 15px 15px;
+
+    :nth-child(odd) {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+
+  .text {
+    display: flex;
+    justify-content: space-between;
+    border-top: 2px solid black;
+    padding: 9px;
+
+    &__input {
+      padding: 15px;
+      width: 80%;
+      font-size: 18px;
+      border: none;
+      outline: none;
+      border-radius: 10px;
+
+      &:disabled {
+        background-color: white;
+      }
+    }
+
+    &__button {
+      padding: 15px;
+      font-size: 18px;
+      width: 12%;
+      border: none;
+      background-color: #65c4b0;
+      border-radius: 10px;
+
+      &:hover {
+        cursor: pointer;
+        background-color: #10563e;
+        color: white;
+      }
+
+      &:disabled {
+        cursor: default;
+        background-color: #badad3;
+        color: #424242;
+      }
+    }
+  }
+}
