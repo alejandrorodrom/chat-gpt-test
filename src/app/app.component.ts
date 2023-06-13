@@ -2,6 +2,7 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { ChatService } from "./shared/services/chat.service";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { ChatState } from "./shared/states/chat.state";
+import { finalize } from "rxjs";
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,10 @@ export class AppComponent {
 
   form: FormGroup;
 
+  loading = false;
+
   @ViewChild('conversation') conversation!: ElementRef;
+  @ViewChild('input') input!: ElementRef;
 
   get question() {
     return this.form.get('question');
@@ -33,7 +37,13 @@ export class AppComponent {
       message: this.question?.value
     };
 
+    this.loading = true;
     this.chatService.sendQuestion(this.question?.value)
+      .pipe(
+        finalize(() => {
+          this.loading = false;
+        })
+      )
       .subscribe({
         next: (value) => {
           this.chatState.message = {
@@ -45,6 +55,7 @@ export class AppComponent {
           this.form.enable();
           setTimeout(() => {
             this.conversation.nativeElement.scrollTop = this.conversation.nativeElement.scrollHeight;
+            this.input.nativeElement.focus();
           })
         }
       })
